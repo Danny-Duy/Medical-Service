@@ -109,45 +109,45 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng latLng = new LatLng(ContantUtil.latitude, ContantUtil.longitude);
-        mMap.addMarker(new MarkerOptions().position(latLng).title("Current location"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16));
-
-        // Creating MarkerOptions
-        MarkerOptions options = new MarkerOptions();
+//        LatLng latLng = new LatLng(ContantUtil.latitude, ContantUtil.longitude);
+//        mMap.addMarker(new MarkerOptions().position(latLng).title("Current location"));
+//        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+//
+//        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16));
+//
+//        // Creating MarkerOptions
+//        MarkerOptions options = new MarkerOptions();
 
         // Setting the position of the marker
-        LatLng newlatLng = new LatLng(10.848502, 106.7735600);
-        options.position(newlatLng);
+        //LatLng newlatLng = new LatLng(10.848502, 106.7735600);
+        //options.position(newlatLng);
 
 //                if (markerPoints.size() == 1) {
 //                    options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
 //                } else if (markerPoints.size() == 2) {
-        options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
+       // options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
 //                }
 
 
-        markerPoints.add(latLng);
-        markerPoints.add(newlatLng);
+    //   markerPoints.add(latLng);
+      //  markerPoints.add(newlatLng);
 
         // Add new marker to the Google Map Android API V2
-        mMap.addMarker(options);
+    //    mMap.addMarker(options);
 
         // Checks, whether start and end locations are captured
-        if (markerPoints.size() >= 2) {
-            LatLng origin = (LatLng) markerPoints.get(0);
-            LatLng dest = (LatLng) markerPoints.get(1);
-
-            // Getting URL to the Google Directions API
-            String url = getDirectionsUrl(origin, dest);
-
-            DownloadTask downloadTask = new DownloadTask();
-
-            // Start downloading json data from Google Directions API
-            downloadTask.execute(url);
-        }
+    //    if (markerPoints.size() >= 2) {
+      //      LatLng origin = (LatLng) markerPoints.get(0);
+        //    LatLng dest = (LatLng) markerPoints.get(1);
+//
+  //          // Getting URL to the Google Directions API
+//            String url = getDirectionsUrl(origin, dest);
+//
+//            DownloadTask downloadTask = new DownloadTask();
+//
+//            // Start downloading json data from Google Directions API
+//            downloadTask.execute(url);
+ //       }
 
     }
 
