@@ -145,6 +145,8 @@ public class LoginActivity extends AppCompatActivity implements LoginInterface, 
                         // Log and toast
                         Log.d("LOG_TOKEN", token);
 
+                        Toast.makeText(LoginActivity.this, "TOKEN: "+ token, Toast.LENGTH_SHORT).show();
+
                         AccountDTO accountDTO = new AccountDTO();
                         accountDTO.setId(Long.parseLong(authDTO.getAccountId()));
                         accountDTO.setToken(token);
