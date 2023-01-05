@@ -9,6 +9,7 @@ import com.hrs.service.ReportService;
 import com.hrs.utils.DateUtils;
 import com.hrs.utils.FormatUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.CollectionUtils;
@@ -128,11 +129,16 @@ public class ReportController {
                 reportValueDTO.setOrderPending(ordersPending.size());
 
                 List<OrdersResponse> ordersApproved = orders.stream()
-                        .filter(object -> object.getProgress().equals("APPROVED"))
+                        .filter(object -> object.getProgress().equals("APPROVED") || object.getProgress().equals("COMPLETED"))
                         .collect(Collectors.toList());
                 reportValueDTO.setOrderApproved(ordersApproved.size());
 
-                double totalPrice = orders.stream().mapToDouble(i -> FormatUtil.formatNumber(i.getTotalCost())).sum();
+                double totalPrice = 0.0;
+                for (OrdersResponse ordersResponse : orders) {
+                    if (ordersResponse.getProgress().equals("APPROVED") || ordersResponse.getProgress().equals("COMPLETED")) {
+                        totalPrice = totalPrice + FormatUtil.formatNumber(ordersResponse.getTotalCost());
+                    }
+                }
                 reportValueDTO.setTotalPrice(FormatUtil.formatNumber(totalPrice));
             } else if (!CollectionUtils.isEmpty(booking)) {
                 reportValueDTO.setOrderTotal(booking.size());
@@ -143,7 +149,7 @@ public class ReportController {
                 reportValueDTO.setOrderPending(bookingPending.size());
 
                 List<BookingResponse> bookingApproved = booking.stream()
-                        .filter(object -> object.getProgress().equals("APPROVED"))
+                        .filter(object -> object.getProgress().equals("APPROVED") || object.getProgress().equals("COMPLETED"))
                         .collect(Collectors.toList());
                 reportValueDTO.setOrderApproved(bookingApproved.size());
 

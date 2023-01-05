@@ -82,7 +82,7 @@
                         <div class="small-box bg-warning">
                             <div class="inner">
                                 <h3 th:text="${reportValueDTO.orderApproved}"></h3>
-                                <p>Orders Approved</p>
+                                <p>Orders Approved / Completed</p>
                             </div>
                             <div class="icon">
                                 <i class="fas fa-chart-pie"></i>
@@ -151,6 +151,7 @@
                                         <th>Account</th>
                                         <th>Pharmacy</th>
                                         <th>Address</th>
+                                        <th>Progress</th>
                                         <th>Total Cost</th>
                                     </tr>
                                     </thead>
@@ -159,6 +160,7 @@
                                         <td th:text="${item.accountDTO.fullName}"></td>
                                         <td th:text="${item.pharmacyDTO.name}"></td>
                                         <td th:text="${item.address}"></td>
+                                        <td th:text="${item.progress}"></td>
                                         <td th:text="${item.totalCost}"></td>
                                     </tr>
                                     </tbody>
@@ -167,6 +169,7 @@
                                         <th>Account</th>
                                         <th>Pharmacy</th>
                                         <th>Address</th>
+                                        <th>Progress</th>
                                         <th>Total Cost</th>
                                     </tr>
                                     </tfoot>
